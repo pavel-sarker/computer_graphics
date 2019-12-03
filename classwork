@@ -1,0 +1,189 @@
+#include<windows.h>
+#include <GL/glut.h>
+#include <math.h>
+void init(void)
+{
+glClearColor(1.0, 1.0, 1.0, 0.1); // Set display window
+
+glMatrixMode(GL_PROJECTION); // Set projection
+
+gluOrtho2D(0.0, 40.0, 0.0, 40.0);
+}
+void display()
+{
+ float theta;
+ int i;
+
+
+glClear(GL_COLOR_BUFFER_BIT); // Clear display window
+ //Set colour to red
+ glColor3f(0.0, 0.0, 1.0);
+ glBegin(GL_POLYGON);
+glVertex2i(5, 30);
+glVertex2i(20, 30);
+glVertex2i(20, 15);
+glVertex2i(5, 15);
+
+glEnd();
+
+
+
+glColor3f(1.0, 1.0, 0.0);
+glBegin(GL_POLYGON);
+for(i=0;i<360;i++)
+{
+ theta=i*3.142/180;
+ glVertex2f(10+4*cos(theta),23+4*sin(theta)); // here
+
+}
+glEnd();
+glColor3f(0.0, 0.0, 1.0);
+glBegin(GL_POLYGON);
+for(i=0;i<360;i++)
+{
+ theta=i*3.142/180;
+ glVertex2f(14+5*cos(theta),23+4*sin(theta)); // here
+
+}
+glEnd();
+
+glColor3f(1.0, 1.0, 0.0);
+glBegin(GL_POLYGON);
+for(i=0;i<360;i++)
+{
+ theta=i*3.142/180;
+ glVertex2f(15+1*cos(theta),23+1*sin(theta)); // here
+
+}
+glEnd();
+
+ glColor3f(1.0, 1.0, 0.0);
+ glBegin(GL_POLYGON);
+glVertex2i(14, 24);
+glVertex2i(15, 27);
+
+glVertex2i(16, 23.5);
+
+
+glVertex2i(18, 26);
+glVertex2i(16.5, 23);
+
+glVertex2i(19, 22);
+glVertex2i(16, 22);
+glVertex2i(15, 19);
+glVertex2i(14, 22);
+
+glVertex2i(12, 21);
+glVertex2i(14, 22.5);
+glVertex2i(12, 25);
+glVertex2i(15, 24);
+
+
+
+
+glEnd();
+
+
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_POLYGON);
+glVertex2i(20, 30);
+glVertex2i(35, 30);
+
+glVertex2i(35, 27);
+glVertex2i(20, 27);
+
+
+glEnd();
+
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_POLYGON);
+glVertex2i(20, 25);
+glVertex2i(35, 25);
+
+glVertex2i(35, 23);
+glVertex2i(20, 23);
+
+
+glEnd();
+
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_POLYGON);
+glVertex2i(20, 21);
+glVertex2i(35, 21);
+
+glVertex2i(35, 19);
+glVertex2i(20, 19);
+
+
+glEnd();
+
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_POLYGON);
+ glVertex2i(5, 15);
+glVertex2i(35, 15);
+glVertex2i(35, 13);
+
+glVertex2i(5, 13);
+
+
+
+glEnd();
+
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_POLYGON);
+ glVertex2i(20, 19);
+glVertex2i(35, 19);
+glVertex2i(35, 17);
+
+glVertex2i(20, 17);
+
+
+
+glEnd();
+
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_POLYGON);
+ glVertex2i(5, 11);
+glVertex2i(35, 11);
+glVertex2i(35, 8);
+
+glVertex2i(5, 8);
+
+
+
+glEnd();
+
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_POLYGON);
+ glVertex2i(5, 6);
+glVertex2i(35, 6);
+glVertex2i(35, 4);
+
+glVertex2i(5, 4);
+
+
+
+glEnd();
+
+glFlush();
+}
+int main(int argc, char* argv[])
+{
+glutInit(&argc, argv);
+// Initalise GLUT
+glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB); // Set display
+
+glutInitWindowPosition(100, 100);
+// Set window position
+glutInitWindowSize(350, 350);
+// Set window size
+glutCreateWindow("An Example OpenGL Program"); // Create
+
+init(); //
+
+glutDisplayFunc(display); // Send graphics to
+
+glutMainLoop(); // Display
+
+return 0;
+}
