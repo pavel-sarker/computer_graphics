@@ -1,0 +1,337 @@
+/*
+ * GLUT Shapes Demo
+ *
+ * Written by Nigel Stewart November 2003
+ *
+ * This program is test harness for the sphere, cone
+ * and torus shapes in GLUT.
+ *
+ * Spinning wireframe and smooth shaded shapes are
+ * displayed until the ESC or q key is pressed.  The
+ * number of geometry stacks and slices can be adjusted
+ * using the + and - keys.
+ */
+#include<windows.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
+#include <stdlib.h>
+
+void init(void)
+{
+glClearColor(1.0, 1.0, 1.0, 0.0); // Set display window colour to white
+glMatrixMode(GL_PROJECTION); // Set projection parameters
+gluOrtho2D(0.0, 35.0, 0.0, 35.0);
+}
+void drawShapes(void)
+{
+glClear(GL_COLOR_BUFFER_BIT); // Clear display window
+//Set colour to black
+glColor3ub(0, 0, 0);
+//Adjust the point size
+glPointSize(5.0);
+// Draw a couple of points
+//Set colour to green
+// Draw a filled triangle
+
+
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(3, 11.5);
+glVertex2i(5, 10);
+glVertex2i(5, 19.5);
+glVertex2i(3, 20);
+glEnd();
+
+
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(3, 20);
+glVertex2i(5 , 19.5);
+glVertex2i(12, 24);
+glVertex2i(10, 25);
+glEnd();
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(3, 21);
+glVertex2i(3 , 23);
+glVertex2i(10, 28);
+glVertex2i(10, 26);
+glEnd();
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(17, 23);
+glVertex2i(17 , 25);
+glVertex2i(10, 28);
+glVertex2i(10, 26);
+glEnd();
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(11, 29);
+glVertex2i(13 , 30);
+glVertex2i(20, 27);
+glVertex2i(18, 26);
+glEnd();
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(18, 15);
+glVertex2i(20 , 16);
+glVertex2i(20, 27);
+glVertex2i(18, 26);
+glEnd();
+
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(21, 16);
+glVertex2i(21 ,26);
+glVertex2i(23, 25);
+glVertex2i(23, 15.5);
+glVertex2i(17, 11);
+glVertex2i(15, 12);
+glEnd();
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(17, 10);
+glVertex2i(23 ,14);
+glVertex2i(23, 12);
+glVertex2i(17, 8);
+glVertex2i(9, 11);
+glVertex2i(9, 13);
+glEnd();
+
+glColor3f(0.0, 0.0, 0.0);
+glBegin(GL_POLYGON);
+glVertex2i(8, 10);
+glVertex2i(16 ,7);
+glVertex2i(14, 6);
+glVertex2i(6, 9);
+glVertex2i(6, 19);
+glVertex2i(8, 20);
+glEnd();
+
+glFlush(); // Process all OpenGL routines
+}
+int main(int argc, char* argv[])
+{
+glutInit(&argc, argv); // Initalise GLUT
+glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB); // Set display mode
+glutInitWindowPosition(100, 100); // Set window position
+glutInitWindowSize(350, 350); // Set window size
+glutCreateWindow("An Example OpenGL Program"); // Create display window
+init(); // Execute initialisation procedure
+glutDisplayFunc(drawShapes); // Send graphics to display window
+glutMainLoop(); // Display everything and wait
+return 0;
+}
+
+
+
+
+
+============================================
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <math.h>
+void init(void)
+{
+    glClearColor(0.0,0.0, 0.0, 0.0);
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0.0, 1500.0, 0.0, 1500.0);
+}
+void drawShapes(void)
+{
+    float theta;
+    int i,x=500,y=475;
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glBegin(GL_POLYGON);
+    glColor3f(0.0, 0.0, 1.0);
+    glVertex2f(100,700);
+    glVertex2f(800,700);
+    glVertex2f(800,300);
+    glVertex2f(100,300);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3f(0.0, 0.0, 1.0);
+    glVertex2f(200,700);
+    glVertex2f(800,700);
+    glVertex2f(800,300);
+    glVertex2f(200,300);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 1.0);
+    for(i=0; i<360; i++)
+    {
+        theta=i*3.142/180;
+        glVertex2f(500+150*cos(theta),500+150*sin(theta));
+    }
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3f(0.0, 0.0, 1.0);
+    for(i=0; i<360; i++)
+    {
+        theta=i*3.142/180;
+        glVertex2f(550+150*cos(theta),500+150*sin(theta));
+    }
+    glEnd();
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_POLYGON);
+    glVertex2i(x,y);
+    glVertex2i(x+30,y-70);
+    glVertex2i(x+50, y);
+    glVertex2i(x+110, y);
+    glVertex2i(x+60, y+40);
+    glVertex2i(x+80, y+110);
+    glVertex2i(x+20, y+70);
+    glVertex2i(x-30, y+110);
+    glVertex2i(x-10, y+40);
+    glVertex2i(x-60, y);
+    glEnd();
+
+      glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+
+    glVertex2f(800,700);
+    glVertex2f(1100,700);
+    glVertex2f(1100,650);
+     glVertex2f(800,650);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 1.0);
+
+    glVertex2f(800,650);
+    glVertex2f(1100,650);
+    glVertex2f(1100,600);
+     glVertex2f(800,600);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+
+    glVertex2f(800,600);
+    glVertex2f(1100,600);
+    glVertex2f(1100,550);
+     glVertex2f(800,550);
+    glEnd();
+
+     glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 1.0);
+
+    glVertex2f(800,550);
+    glVertex2f(1100,550);
+    glVertex2f(1100,500);
+     glVertex2f(800,500);
+    glEnd();
+
+        glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+
+    glVertex2f(800,500);
+    glVertex2f(1100,500);
+    glVertex2f(1100,450);
+     glVertex2f(800,450);
+    glEnd();
+
+        glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 1.0);
+
+    glVertex2f(800,450);
+    glVertex2f(1100,450);
+    glVertex2f(1100,400);
+     glVertex2f(800,400);
+    glEnd();
+        glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+
+    glVertex2f(800,400);
+    glVertex2f(1100,400);
+    glVertex2f(1100,350);
+     glVertex2f(800,350);
+    glEnd();
+
+         glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 1.0);
+
+    glVertex2f(800,350);
+    glVertex2f(1100,350);
+    glVertex2f(1100,300);
+     glVertex2f(800,300);
+    glEnd();
+
+           glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+
+    glVertex2f(100,300);
+    glVertex2f(1100,300);
+    glVertex2f(1100,250);
+     glVertex2f(100,250);
+    glEnd();
+
+        glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 1.0);
+
+    glVertex2f(100,250);
+    glVertex2f(1100,250);
+    glVertex2f(1100,200);
+     glVertex2f(100,200);
+    glEnd();
+             glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+
+    glVertex2f(100,200);
+    glVertex2f(1100,200);
+    glVertex2f(1100,150);
+     glVertex2f(100,150);
+    glEnd();
+
+       glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 1.0);
+
+    glVertex2f(100,150);
+    glVertex2f(1100,150);
+    glVertex2f(1100,100);
+     glVertex2f(100,100);
+    glEnd();
+
+             glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+
+    glVertex2f(100,100);
+    glVertex2f(1100,100);
+    glVertex2f(1100,50);
+     glVertex2f(100,50);
+    glEnd();
+
+
+
+    glFlush();
+}
+int main(int argc, char* argv[])
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+    glutInitWindowPosition(100, 100);
+    glutInitWindowSize(500, 500);
+    glutCreateWindow("Monisha Sarker");
+    init();
+    glutDisplayFunc(drawShapes);
+
+  glutMainLoop();
+    return 0;
+}
+
+
